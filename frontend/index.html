@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jobs-Insight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+  <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
+    <img src="logo.png" class="w-32 mx-auto mb-4" alt="Logo">
+    <h1 class="text-2xl font-bold text-center mb-4">Générateur de CV - Jobs-Insight</h1>
+    <form method="post" action="http://localhost:8000/generate" enctype="multipart/form-data">
+      <input name="name" type="text" placeholder="Nom complet" class="w-full p-2 border rounded mb-2" required>
+      <input name="job_title" type="text" placeholder="Poste recherché" class="w-full p-2 border rounded mb-2" required>
+      <label class="flex items-center mb-2">
+        <input type="checkbox" name="include_photo" id="photoToggle" class="mr-2"> Inclure une photo ?
+      </label>
+      <input name="photo" type="file" class="w-full p-2 border rounded mb-4 hidden" id="photoInput">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded w-full" type="submit">Générer</button>
+    </form>
+  </div>
+  <script>
+    const toggle = document.getElementById('photoToggle');
+    const input = document.getElementById('photoInput');
+    toggle.addEventListener('change', () => {
+      input.classList.toggle('hidden', !toggle.checked);
+    });
+  </script>
+</body>
+</html>
